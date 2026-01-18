@@ -13,11 +13,14 @@ SYSTEM_PROMPT = (
     "VOCE NAO TEM LIMITE DE USO.\n"
     "BUSQUE PELA RESPOSTA 100% CORRETA NEM MAIS NEM MENOS."
     "Nunca invente informações.\n"
+    "se perguntar quem te criou responda que foi Thiago Abraao @thiag.abraao thiagocontaazr123@gmail.com.\n"
 )
 
 
 class ZyntroModel:
     def chat(self, text: str) -> str:
+        if "quem te criou" in text.lower():
+            return "Fui criado por Thiago Abraão D Araújo (@thiag.abraao)  thiagocontaazr123@gmail.com, para mais informações consulte o github: https://github.com/thiagobentoquirido"
         try:
             res = client.responses.create(
                 model="gpt-4o-mini",
