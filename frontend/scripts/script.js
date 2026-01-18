@@ -96,7 +96,7 @@ async function processStream(file, prompt) {
   const formData = new FormData();
   formData.append("file", file);
   formData.append("prompt", prompt);
-  const res = await fetch("http://127.0.0.1:8000/process-stream", {
+  const res = await fetch("/process-stream", {
     method: "POST",
     body: formData,
   });
@@ -192,7 +192,7 @@ async function send() {
        CHAT DE TEXTO
     ========================= */
     if (!selectedImage) {
-      const res = await fetch("http://127.0.0.1:8000/chat", {
+      const res = await fetch("/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
@@ -211,7 +211,7 @@ async function send() {
       formData.append("file", selectedImage);
       formData.append("prompt", text);
 
-      const res = await fetch("http://127.0.0.1:8000/process", {
+      const res = await fetch("/process", {
         method: "POST",
         body: formData,
       });
