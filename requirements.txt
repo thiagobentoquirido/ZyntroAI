@@ -1,4 +1,4 @@
-//CREATED BY THIAGO ARAUJO -- thiagocontaazr123@gmail.com - 19971008646 -- @thiag.abraao
+
 
 //all that will be needed, use: uvicorn main:app --reload to run the server
 // first : dir -> cd app ou uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
@@ -11,7 +11,7 @@
 //caso rode o servidor em outra porta, lembre de alterar a porta na chamada do frontend no arquivo index.html
  //use uvicorn app.main:app --workers 1 //para rodar mais rapido em producao
 
-
+//CREATED BY THIAGO ARAUJO -- thiagocontaazr123@gmail.com - 19971008646 -- @thiag.abraao
 
 fastapi
 uvicorn
