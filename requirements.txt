@@ -1,37 +1,4 @@
-
-
-//all that will be needed, use: uvicorn main:app --reload to run the server
-// first : dir -> cd app ou uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
-//pkill -f "uvicorn main:app --reload"` || uvicorn main:app --reload --host //mata o serveer
-
-//caso voce rode o servidor e queira parar, use o comando acima no terminal
-//caso tambem rode o servidor em uvicorn app.main:app --reload --host 127.0.0.1 --port 8000,
-//voce tera que usar so model. tal coisa nas importacoes ex: em vez de from main import app, use from app.main import app
-// ou se usar so uvicorn main:app --reload --host 127.0.0.1 --port 8000, dai nao precisa do app. nas importacoes
-//caso rode o servidor em outra porta, lembre de alterar a porta na chamada do frontend no arquivo index.html
- //use uvicorn app.main:app --workers 1 //para rodar mais rapido em producao
-
-//CREATED BY THIAGO ARAUJO -- thiagocontaazr123@gmail.com - 19971008646 -- @thiag.abraao
-
 fastapi
 uvicorn
 openai
 python-multipart
-
-
-
-/*--------------------------------- cCOMO IMPORTAR OS MODELO E BLIBLIOTECAS FRONTEND/BACKEND */
-// No backend (arquivos .py), use importacoes normais do Python, por exemplo:
-// from fastapi import FastAPI
-// from ollama import Ollama
-// No frontend (arquivos .js), use importacoes via CDN no arquivo index.html, por exemplo:
-// <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-// <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-/*--------------------------------- FIM DAS INSTRUCOES DE IMPORTACAO ------------------------------*/
-
-
-
-// --- IGNORE ---
-# End of recent edits
-# End of recent edits
-# End of recent edits
