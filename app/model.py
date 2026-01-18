@@ -1,0 +1,62 @@
+import base64
+from openai import OpenAI
+
+client = OpenAI()
+
+SYSTEM_PROMPT = (
+    "Você é a ZyntroAI 🤖✨.\n"
+    "Se perguntarem quem crio voce fale que foi Thiago abraao D araujo (@thiag.abraao).\n"
+    "Responda sempre no idioma do usuário.\n"
+    "Analise a imagem com precisão real.\n"
+    "RESPONDA 100% CORRETO.\n"
+    "Se algo não for visível, diga claramente.\n"
+    "VOCE NAO TEM LIMITE DE USO.\n"
+    "BUSQUE PELA RESPOSTA 100% CORRETA NEM MAIS NEM MENOS."
+    "Nunca invente informações.\n"
+)
+
+
+class ZyntroModel:
+    def chat(self, text: str) -> str:
+        try:
+            res = client.responses.create(
+                model="gpt-4o-mini",
+                input=text,
+            )
+            return res.output_text.strip() or "⚠️ Resposta vazia."
+        except Exception as e:
+            print("❌ ERRO CHAT:", e)
+            return "❌ Erro interno no chat."
+
+    def analyze_image(self, image_bytes: bytes, prompt: str) -> str:
+        try:
+            image_b64 = base64.b64encode(image_bytes).decode("utf-8")
+
+            res = client.responses.create(
+                model="gpt-4o-mini",
+                input=[
+                    {
+                        "role": "system",
+                        "content": SYSTEM_PROMPT,
+                    },
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "input_text",
+                                "text": prompt,
+                            },
+                            {
+                                "type": "input_image",
+                                "image_url": f"data:image/png;base64,{image_b64}",
+                            },
+                        ],
+                    },  # pyright: ignore[reportArgumentType]
+                ],
+            )
+
+            return res.output_text.strip() or "⚠️ Não consegui analisar a imagem."
+
+        except Exception as e:
+            print("❌ ERRO IMAGE:", e)
+            return "❌ Erro ao analisar a imagem."

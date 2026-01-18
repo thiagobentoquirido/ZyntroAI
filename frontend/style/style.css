@@ -1,0 +1,321 @@
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --bg-main: #0a0a0f;
+  --bg-panel: #0f1220;
+  --bg-user: #1a1f36;
+  --bg-ai: #0f172a;
+  --border: #23263a;
+  --purple: #8b5cf6;
+  --purple-soft: #a78bfa;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(1200px at top, #15183a, #0a0a0f);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  width: 100%;
+  max-width: 900px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  padding: 18px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+/* =========================
+   CHAT
+========================= */
+.chat {
+  flex: 1;
+  padding: 24px 16px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   BLOCO
+========================= */
+.block {
+  margin-bottom: 26px;
+  animation: fadeUp 0.25s ease;
+}
+
+/* =========================
+   QUESTION
+========================= */
+.question {
+  background: linear-gradient(145deg, #1a1f36, #161a2d);
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+
+/* =========================
+   ANSWER
+========================= */
+.answer {
+  position: relative;
+  background: linear-gradient(145deg, #0f172a, #0b1022);
+  padding: 18px 18px 18px 22px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+.answer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--purple), var(--purple-soft));
+  border-radius: 4px;
+}
+
+/* =========================
+   INPUT
+========================= */
+.input-box {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(10px);
+}
+
+textarea {
+  flex: 1;
+  resize: none;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 15px;
+  outline: none;
+}
+
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+textarea:focus {
+  border-color: var(--purple);
+}
+
+button {
+  padding: 0 18px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+/* =========================
+   LOADER
+========================= */
+.text-loader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--purple);
+  font-style: italic;
+}
+
+.text-loader span.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--purple);
+  border-radius: 50%;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+.text-loader span.dot:nth-child(1) { animation-delay: 0s; }
+.text-loader span.dot:nth-child(2) { animation-delay: 0.15s; }
+.text-loader span.dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes pulse {
+  0% { opacity: .3; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: .3; transform: scale(.8); }
+}
+
+/* =========================
+   PREVIEW DE IMAGEM
+========================= */
+.preview-area {
+  display: flex;
+  align-items: center;
+}
+
+.preview-area img {
+  max-width: 100px;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+/* INPUT DESATIVADO */
+textarea:disabled {
+  opacity: 0.6;
+  
+  cursor: not-allowed;
+
+}
+/* =========================
+   ENVIO
+========================= */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: -50px;
+  margin-left: 50px;   /* 👉 move pro lado */
+  top: 20px;
+  padding: 4px 19px;
+  border-radius: 999px;
+  background: #943baf;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+
+  transition: all .25s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 12px 50px 15px rgba(143, 15, 182, 0.4);
+}
+
+.preview-area {
+  position: relative;
+  max-width: 220px;
+}
+
+.preview-area img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.remove-image {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-image:hover {
+  background: rgba(255,0,0,0.8);
+}
+
+/* =========================
+   REMOVER IMG NOVO
+========================= */
+.remove-image-btn {
+  margin-top: 10px;
+  padding: 8px 18px;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  border-radius: 8px;
+  border: none;
+  background: #ff3b3b;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.remove-image-btn:hover {
+  background: #e02828;
+  transition: 0.5s all ease-in-out;
+}
+
+
+/* ANIMAÇÃO DE ENVIO */
+.sending {
+  animation: sendingPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes sendingPulse {
+  from {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+
+
+
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media (min-width: 768px) {
+  .question, .answer {
+    max-width: 80%;
+  }
+}
