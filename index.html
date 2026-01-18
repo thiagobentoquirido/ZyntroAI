@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZyntroAI</title>
+
+  <!-- Ícone -->
+  <link rel="icon" type="image/x-icon" href="../images/logo.ico" />
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style/style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1>ZyntroAI</h1>
+    </header>
+
+    <!-- CHAT -->
+    <main id="chat" class="chat"></main>
+
+    <!-- INPUT -->
+    <footer class="input-box">
+
+      <textarea
+        id="input"
+        placeholder="Pergunte qualquer coisa..."
+        rows="1"
+      ></textarea>
+
+      <!-- ENVIAR -->
+      <button id="send" onclick="send()">Enviar</button>
+
+
+      <!-- INPUT FILE (OCULTO) -->
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        style="display: none;"
+      />
+
+      <!-- BOTÃO ANEXAR -->
+      <button onclick="sendFile()" title="Enviar imagem">
+        📎
+      </button>
+
+
+      
+ 
+
+    </footer>
+
+  </div>
+
+  <!-- JS -->
+  <script src="../scripts/script.js"></script>
+</body>
+</html>
