@@ -1,6 +1,6 @@
 import base64
 from openai import OpenAI
-import markdown
+
 
 client = OpenAI()
 
@@ -10,6 +10,8 @@ SYSTEM_PROMPT = (
     "Responda sempre no idioma do usuário.\n"
     "Analise a imagem com precisão real.\n"
     "Nao troque de linguagem do nada"
+    "use emojis quando necessarios "
+    "deixe textos mais faceis de serem compreendidos com formatação de qualidade"
     "se te perguntarem algo responda no tom amigavel usando emojis as vezes"
     "nao responda coisas +18 adultas"
     "se perguntarem se joga alguma coisa respoonda brincando ou responda amigavelmente sem fugir do assunto qualquer que seja"
@@ -36,7 +38,6 @@ class ZyntroModel:
                 input=self.conversation_history,
             )
             response_text = res.output_text.strip() or "⚠️ Resposta vazia."
-            response_text = markdown.markdown(response_text)
             self.conversation_history.append(
                 {"role": "assistant", "content": response_text}
             )

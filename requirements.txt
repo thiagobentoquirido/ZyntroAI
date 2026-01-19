@@ -2,4 +2,3 @@ python-multipart
 fastapi
 uvicorn
 openai
-markdown
