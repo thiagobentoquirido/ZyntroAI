@@ -1,5 +1,6 @@
 import base64
 from openai import OpenAI
+import markdown
 
 client = OpenAI()
 
@@ -35,7 +36,10 @@ class ZyntroModel:
                 input=self.conversation_history,
             )
             response_text = res.output_text.strip() or "⚠️ Resposta vazia."
-            self.conversation_history.append({"role": "assistant", "content": response_text})
+            response_text = markdown.markdown(response_text)
+            self.conversation_history.append(
+                {"role": "assistant", "content": response_text}
+            )
             return response_text
         except Exception as e:
             print("❌ ERRO CHAT:", e)
