@@ -22,15 +22,21 @@ SYSTEM_PROMPT = (
 
 
 class ZyntroModel:
+    def __init__(self):
+        self.conversation_history = []
+
     def chat(self, text: str) -> str:
         if "quem te criou" in text.lower():
             return "Fui criado por Thiago Abraão D Araújo (@thiag.abraao)  thiagocontaazr123@gmail.com, para mais informações consulte o github: https://github.com/thiagobentoquirido"
+        self.conversation_history.append({"role": "user", "content": text})
         try:
             res = client.responses.create(
                 model="gpt-4o-mini",
-                input=text,
+                input=self.conversation_history,
             )
-            return res.output_text.strip() or "⚠️ Resposta vazia."
+            response_text = res.output_text.strip() or "⚠️ Resposta vazia."
+            self.conversation_history.append({"role": "assistant", "content": response_text})
+            return response_text
         except Exception as e:
             print("❌ ERRO CHAT:", e)
             return "❌ Erro interno no chat."
