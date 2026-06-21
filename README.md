@@ -1,6 +1,6 @@
 # Zyntro AI
 
-![Zyntro AI](https://img.shields.io/badge/status-active-brightgreen)
+![Zyntro AI](NÃO FUNCIONANDO MAIS POR LIMITE DE TOKENS NA IA)
 
 Zyntro AI é um projeto de aplicação web (UMA IA) que utiliza sua inteligência artificial para [descreva brevemente a funcionalidade principal, ex: gerar respostas inteligentes, processar dados ou criar recomendações personalizadas].  
 O backend é construído com **FastAPI** e servido via **Uvicorn**, oferecendo uma API rápida, escalável e fácil de integrar.
